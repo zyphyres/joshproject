@@ -24,6 +24,7 @@ Route::group(['middleware'=>['web']], function(){
     Route::middleware(['auth'])->group(function() {
         
         Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+        Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
         Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
     });

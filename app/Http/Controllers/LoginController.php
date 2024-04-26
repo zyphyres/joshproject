@@ -18,6 +18,8 @@ class LoginController extends Controller
         }
     }
 
+    
+
     public function showRegistration(){
         return view('auth.registration');
     }
