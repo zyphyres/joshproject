@@ -53,12 +53,13 @@ class LoginController extends Controller
         $password = $request->password;
         
         if(Auth::attempt(['email' => $username, 'password' => $password])){
-            $user = Auth::user();
-            $user->accountType = accountType::find($user->status)->name;
-
-            return redirect('dashboard')->with(['success'=>'Successfully Logged in',
-                                                'user'=>$user,
-                                                'accountType'=>$user->accountType]);
+       
+            $user = Auth()->user();
+            $userName = Auth()->user()->name;
+            $accountType = accountType::find($user->status)->accountName;
+            session(['user'=>$userName,
+            'accountType'=>$accountType]);
+            return redirect('dashboard');
                                             
         }else{
             return redirect()->back()->with('error', 'Invalid credentials');
