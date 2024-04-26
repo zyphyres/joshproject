@@ -16,17 +16,26 @@ class LoginController extends Controller
         if (Auth::check()) {
           
             $user = Auth()->user();
+<<<<<<< HEAD
+=======
+           
+>>>>>>> ed6e6b704919064fa6e781306911eb833e027fc6
             
             $userName = Auth()->user()->name;
             $email = Auth()->user()->email;
 
             $accountType = accountType::find($user->status)->accountName;
+<<<<<<< HEAD
 
             session([
             'user'=>$userName,
             'accountType'=>$accountType,
             'email'=>$email
         ]);
+=======
+            session(['user'=>$user,
+            'accountType'=>$accountType]);
+>>>>>>> ed6e6b704919064fa6e781306911eb833e027fc6
 
             return view('dashboard.index');
         } else {
@@ -61,6 +70,7 @@ class LoginController extends Controller
         if(Auth::attempt(['email' => $username, 'password' => $password])){
        
             $user = Auth()->user();
+<<<<<<< HEAD
             $userName = Auth()->user()->name;
             $email = Auth()->user()->email;
             $accountType = accountType::find($user->status)->accountName;
@@ -69,6 +79,14 @@ class LoginController extends Controller
             'accountType'=>$accountType,
             'email'=>$email
         ]);
+=======
+            
+            $accountType = accountType::find($user->status)->accountName;
+            // dd($user->name);
+            session(['user'=>$user,
+            'accountType'=>$accountType]);
+            
+>>>>>>> ed6e6b704919064fa6e781306911eb833e027fc6
             return redirect('dashboard');
                                             
         }else{
