@@ -49,6 +49,11 @@
     </div>
 @endif
 
+@if(session('error'))
+    <div class="alert alert-success">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="container">
     <h2>Login</h2>
     <form action="{{Route('loginAttempt')}}" method="post">

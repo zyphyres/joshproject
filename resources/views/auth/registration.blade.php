@@ -51,7 +51,7 @@
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Register">
     </form>
-    <button onclick="window.location.href = '{{ route('/') }}'">Registration</button>
+    <button onclick="window.location.href = '{{ route('/') }}'">Login</button>
 
 </div>
 </body>
