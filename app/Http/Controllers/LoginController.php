@@ -16,11 +16,17 @@ class LoginController extends Controller
         if (Auth::check()) {
           
             $user = Auth()->user();
-            $userName = Auth()->user()->name;
             
+            $userName = Auth()->user()->name;
+            $email = Auth()->user()->email;
+
             $accountType = accountType::find($user->status)->accountName;
-            session(['user'=>$userName,
-            'accountType'=>$accountType]);
+
+            session([
+            'user'=>$userName,
+            'accountType'=>$accountType,
+            'email'=>$email
+        ]);
 
             return view('dashboard.index');
         } else {
@@ -56,9 +62,13 @@ class LoginController extends Controller
        
             $user = Auth()->user();
             $userName = Auth()->user()->name;
+            $email = Auth()->user()->email;
             $accountType = accountType::find($user->status)->accountName;
-            session(['user'=>$userName,
-            'accountType'=>$accountType]);
+            session([
+            'user'=>$userName,
+            'accountType'=>$accountType,
+            'email'=>$email
+        ]);
             return redirect('dashboard');
                                             
         }else{

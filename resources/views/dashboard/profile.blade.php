@@ -2,7 +2,6 @@
 <body>
  @extends('layouts.mainhead')
   @extends('layouts.sidebar')
-  
 
   <main id="main" class="main">
 
@@ -25,14 +24,16 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <h2>Kevin Anderson</h2>
-              <h3>Web Designer</h3>
+              @if(session('user'))
+              <h2>{{ session('user')}}</h2>
+              <h3>{{ session('accountType')}}</h3>
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
               </div>
+              @endif
             </div>
           </div>
 
@@ -69,10 +70,11 @@
                   <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
 
                   <h5 class="card-title">Profile Details</h5>
+                  @if(session('user'))
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-9 col-md-8">{{ session('user')}}</div>
                   </div>
 
                   <div class="row">
@@ -81,8 +83,8 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Job</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                    <div class="col-lg-3 col-md-4 label">Role</div>
+                    <div class="col-lg-9 col-md-8">{{ session('accountType')}}</div>
                   </div>
 
                   <div class="row">
@@ -102,9 +104,9 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">{{ session('email')}}</div>
                   </div>
-
+                @endif
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
