@@ -11,7 +11,17 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function index(){
+  
+
         if (Auth::check()) {
+          
+            $user = Auth()->user();
+            $userName = Auth()->user()->name;
+            
+            $accountType = accountType::find($user->status)->accountName;
+            session(['user'=>$userName,
+            'accountType'=>$accountType]);
+
             return view('dashboard.index');
         } else {
             return view('auth.index');
