@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+    @if(session('user'))
+    <div>
+        Welcome, {{ session('user')->name}}
+    </div>
+@endif
     <button onclick="window.location.href = '{{ route('logout') }}'">Logout</button>
 </body>
 </html>

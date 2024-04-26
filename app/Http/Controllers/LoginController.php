@@ -37,9 +37,11 @@ class LoginController extends Controller
         // dd($request);
         $username = $request->email;
         $password = $request->password;
-
+        
         if(Auth::attempt(['email' => $username, 'password' => $password])){
-            return redirect('dashboard');
+            $user = Auth::user();
+            return redirect('dashboard')->with(['success'=>'Successfully Logged in',
+                                                'user'=>$user]);
         }else{
             return redirect()->back()->with('error', 'Invalid credentials');
         }
