@@ -9,7 +9,8 @@
 <body>
     @if(session('user'))
     <div>
-        Welcome, {{ session('user')->name}} {{session('userStatus')}}
+        Welcome, {{ session('user')->name}} <br>
+        Account Type: {{ session('user')->status == 0 ? 'Agent' : 'Broker' }}
     </div>
 @endif
     <button onclick="window.location.href = '{{ route('logout') }}'">Logout</button>
