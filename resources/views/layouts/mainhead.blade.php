@@ -170,13 +170,13 @@
 
     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
         <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-        @if(session('user'))
+        @if(session('userName'))
         <span class="d-none d-md-block dropdown-toggle ps-2">{{ session('user')->name}}</span>
         @endif
       </a><!-- End Profile Iamge Icon -->
 
       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-      @if(session('user'))
+      @if(session('userName'))
         <li class="dropdown-header">
           <h6> {{ session('user')->name}}</h6>
           <span>{{ session('user')->status == 0 ? 'Agent' : 'Broker' }}</span>
