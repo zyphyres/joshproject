@@ -25,7 +25,7 @@
 
               <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
               @if(session('user'))
-              <h2>{{ session('user')}}</h2>
+              <h2>{{ session('user')['name']}}</h2>
               <h3>{{ session('accountType')}}</h3>
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -70,11 +70,11 @@
                   <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
 
                   <h5 class="card-title">Profile Details</h5>
-                  @if(session('user'))
+                  @if(session('user')['name'])
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">{{ session('user')}}</div>
+                    <div class="col-lg-9 col-md-8">{{ session('user')['name']}}</div>
                   </div>
 
                   <div class="row">
@@ -104,7 +104,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">{{ session('email')}}</div>
+                    <div class="col-lg-9 col-md-8">{{ session('user')['email']}}</div>
                   </div>
                 @endif
                 </div>
