@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\accountType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,10 +23,11 @@ class LoginController extends Controller
     }
 
     public function storeData(Request $request){
-        
+        //  dd($request);
         User::create([
             'name'=> $request->name,
             'email'=> $request->email,
+            'status'=>$request->status,
             'password' => Hash::make($request->password),
         ]);
 
@@ -40,8 +42,11 @@ class LoginController extends Controller
         
         if(Auth::attempt(['email' => $username, 'password' => $password])){
             $user = Auth::user();
+            $userStatus = accountType::find('id',$user->status);
+
             return redirect('dashboard')->with(['success'=>'Successfully Logged in',
-                                                'user'=>$user]);
+                                                'user'=>$user,
+                                                'userStatus'=>$userStatus]);
         }else{
             return redirect()->back()->with('error', 'Invalid credentials');
         }

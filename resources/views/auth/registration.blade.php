@@ -20,7 +20,7 @@
     h2 {
         text-align: center;
     }
-    input[type="text"], input[type="password"],input[type="email"] {
+    input[type="text"], input[type="password"],input[type="email"],select {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -49,6 +49,10 @@
         <input type="text" name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
+        <select name="status">
+            <option value="0">Agent</option>
+            <option value="1">Broker</option>
+        </select>
         <input type="submit" value="Register">
     </form>
     <button onclick="window.location.href = '{{ route('/') }}'">Login</button>
